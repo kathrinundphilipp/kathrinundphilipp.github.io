@@ -1,0 +1,177 @@
+import { useCallback, useEffect, useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
+import EnvelopeFlap from './EnvelopeFlap'
+import WaxSeal from './WaxSeal'
+import InvitationCard from './InvitationCard'
+import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+
+export type IntroPhase = 'closed' | 'opening' | 'revealed'
+
+const STORAGE_KEY = 'wedding-intro-seen'
+const EASE = [0.65, 0, 0.35, 1] as const
+const OPENING_DURATION_MS = 3400
+
+function hasSeenIntro() {
+  try {
+    return window.localStorage.getItem(STORAGE_KEY) === '1'
+  } catch {
+    return false
+  }
+}
+
+function markIntroSeen() {
+  try {
+    window.localStorage.setItem(STORAGE_KEY, '1')
+  } catch {
+    /* ignore */
+  }
+}
+
+export default function EnvelopeIntro() {
+  const reduceMotion = usePrefersReducedMotion()
+  const skip = reduceMotion || hasSeenIntro()
+
+  const [phase, setPhase] = useState<IntroPhase>(skip ? 'revealed' : 'closed')
+  const [settled, setSettled] = useState(skip)
+
+  const handleOpen = useCallback(() => {
+    setPhase((p) => (p === 'closed' ? 'opening' : p))
+  }, [])
+
+  useEffect(() => {
+    if (phase !== 'opening') return
+    const duration = reduceMotion ? 500 : OPENING_DURATION_MS
+    const t = setTimeout(() => setPhase('revealed'), duration)
+    return () => clearTimeout(t)
+  }, [phase, reduceMotion])
+
+  useEffect(() => {
+    if (phase !== 'revealed') return
+    markIntroSeen()
+    const t = setTimeout(() => setSettled(true), reduceMotion ? 100 : 650)
+    return () => clearTimeout(t)
+  }, [phase, reduceMotion])
+
+  useEffect(() => {
+    const locked = !settled
+    document.body.classList.toggle('intro-locked', locked)
+    return () => document.body.classList.remove('intro-locked')
+  }, [settled])
+
+  return (
+    <motion.section
+      className={
+        settled
+          ? 'relative flex min-h-dvh w-full flex-col items-center justify-center overflow-hidden bg-paper px-4 pb-20 pt-16'
+          : 'fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-paper px-4'
+      }
+    >
+      {/* paper / linen background texture */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage:
+            'repeating-linear-gradient(115deg, rgba(70,60,40,0.035) 0px, rgba(70,60,40,0.035) 1px, transparent 1px, transparent 3px)',
+        }}
+      />
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(circle at 50% 38%, rgba(255,255,255,0.5), transparent 55%), radial-gradient(circle at 50% 90%, rgba(70,60,40,0.08), transparent 60%)',
+        }}
+      />
+
+      <div className="relative z-10 flex flex-col items-center gap-9">
+        <motion.div
+          className={`relative w-[min(84vw,400px)] ${phase === 'closed' ? 'cursor-pointer' : ''}`}
+          style={{ aspectRatio: '3 / 2', perspective: 1900, transformStyle: 'preserve-3d' }}
+          onClick={handleOpen}
+          role={phase === 'closed' ? 'button' : undefined}
+          tabIndex={phase === 'closed' ? 0 : undefined}
+          aria-label={phase === 'closed' ? 'Brief öffnen' : undefined}
+          onKeyDown={(e) => {
+            if (phase === 'closed' && (e.key === 'Enter' || e.key === ' ')) handleOpen()
+          }}
+          whileHover={phase === 'closed' ? { scale: 1.015, y: -3 } : undefined}
+          whileTap={phase === 'closed' ? { scale: 0.985 } : undefined}
+          transition={{ duration: 0.35, ease: EASE }}
+        >
+          {/* envelope back panel */}
+          <motion.div
+            className="absolute inset-0 rounded-[2px]"
+            animate={{ scale: phase === 'closed' ? 1 : 0.97, opacity: phase === 'revealed' ? 0 : 1 }}
+            transition={{ duration: 0.9, ease: EASE, delay: phase === 'revealed' ? 0.1 : 0 }}
+            style={{
+              background:
+                'linear-gradient(150deg, var(--color-cream) 0%, var(--color-cream-dark) 100%)',
+              boxShadow: '0 25px 55px -20px rgba(50,43,32,0.5)',
+              transition: 'transform 0.35s ease',
+              zIndex: 0,
+            }}
+          />
+
+          <InvitationCard phase={phase} reduceMotion={reduceMotion} />
+
+          {/* envelope front pocket panel */}
+          <motion.div
+            className="absolute inset-x-0 bottom-0 h-[64%] rounded-b-[2px]"
+            animate={{ opacity: phase === 'revealed' ? 0 : 1 }}
+            transition={{ duration: 0.6, ease: EASE }}
+            style={{
+              background:
+                'linear-gradient(175deg, var(--color-cream) 0%, var(--color-cream-dark) 100%)',
+              boxShadow:
+                'inset 0 10px 16px -12px rgba(50,43,32,0.45), 0 18px 30px -18px rgba(50,43,32,0.4)',
+              zIndex: 20,
+            }}
+          />
+
+          <EnvelopeFlap open={phase !== 'closed'} reduceMotion={reduceMotion} />
+
+          <WaxSeal initials="K & P" broken={phase !== 'closed'} reduceMotion={reduceMotion} />
+        </motion.div>
+
+        <AnimatePresence>
+          {phase === 'closed' && (
+            <motion.div
+              key="prompt"
+              className="flex flex-col items-center gap-2 text-center"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6, transition: { duration: 0.35 } }}
+              transition={{ duration: 0.7, ease: EASE, delay: 0.3 }}
+            >
+              <p className="font-script text-[19px] italic text-sage-dark">Für Euch</p>
+              <p className="font-sans text-[11px] tracking-[0.25em] text-sage-soft uppercase animate-pulse">
+                Tippe, um den Brief zu öffnen
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {phase === 'revealed' && (
+            <motion.div
+              key="scroll-cue"
+              className="mt-2 flex flex-col items-center gap-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8, ease: EASE, delay: 1.1 }}
+            >
+              <p className="font-sans text-[10px] tracking-[0.3em] text-sage-soft uppercase">Scroll</p>
+              <div className="h-7 w-px overflow-hidden bg-sage-light/40">
+                <motion.div
+                  className="h-full w-full bg-sage-dark"
+                  animate={{ y: ['-100%', '100%'] }}
+                  transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+                />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.section>
+  )
+}
