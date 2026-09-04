@@ -42,7 +42,7 @@ export default function EnvelopeIntro() {
     return () => document.body.classList.remove('intro-locked')
   }, [settled])
 
-  const closedScale = isMobile ? 2.5 : 1.08
+  const closedScale = isMobile ? 4.3 : 1.08
 
   return (
     <motion.section
@@ -75,7 +75,7 @@ export default function EnvelopeIntro() {
             aspectRatio: '3 / 2',
             perspective: 1900,
             transformStyle: 'preserve-3d',
-            transformOrigin: '50% 42%',
+            transformOrigin: '50% 39%',
           }}
           onClick={handleOpen}
           role={phase === 'closed' ? 'button' : undefined}
@@ -92,11 +92,11 @@ export default function EnvelopeIntro() {
         >
           {/* fine paper grain, scales together with the envelope */}
           <div
-            className="pointer-events-none absolute -inset-1 z-40 opacity-[0.5] mix-blend-multiply"
+            className="pointer-events-none absolute inset-0 z-40 opacity-[0.3] mix-blend-multiply"
             style={{
               backgroundImage:
-                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.28 0 0 0 0 0.24 0 0 0 0 0.16 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-              backgroundSize: '140px 140px',
+                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.28 0 0 0 0 0.24 0 0 0 0 0.16 0 0 0 0.4 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+              backgroundSize: '60px 60px',
             }}
           />
 
@@ -123,8 +123,8 @@ export default function EnvelopeIntro() {
             transition={{ duration: 0.9, ease: EASE, delay: phase === 'revealed' ? 0.1 : 0 }}
             style={{
               background:
-                'linear-gradient(150deg, var(--color-cream) 0%, var(--color-cream-dark) 100%)',
-              boxShadow: '0 25px 55px -20px rgba(50,43,32,0.5)',
+                'radial-gradient(120% 90% at 50% 42%, var(--color-cream) 0%, var(--color-cream) 55%, var(--color-cream-dark) 100%)',
+              boxShadow: phase === 'closed' ? 'none' : '0 25px 55px -20px rgba(50,43,32,0.5)',
               transition: 'transform 0.35s ease',
               zIndex: 0,
             }}
@@ -139,16 +139,20 @@ export default function EnvelopeIntro() {
             transition={{ duration: 0.6, ease: EASE }}
             style={{
               background:
-                'linear-gradient(175deg, var(--color-cream) 0%, var(--color-cream-dark) 100%)',
-              boxShadow:
-                'inset 0 10px 16px -12px rgba(50,43,32,0.45), 0 18px 30px -18px rgba(50,43,32,0.4)',
+                'radial-gradient(120% 70% at 50% 0%, var(--color-cream) 0%, var(--color-cream) 60%, var(--color-cream-dark) 100%)',
+              boxShadow: phase === 'closed' ? 'none' : '0 18px 30px -18px rgba(50,43,32,0.4)',
               zIndex: 20,
             }}
           />
 
           <EnvelopeFlap open={phase !== 'closed'} reduceMotion={reduceMotion} />
 
-          <WaxSeal initials="K & P" broken={phase !== 'closed'} reduceMotion={reduceMotion} />
+          <WaxSeal
+            initials="K & P"
+            broken={phase !== 'closed'}
+            reduceMotion={reduceMotion}
+            sizeFactor={phase === 'closed' && isMobile ? 0.46 : 1}
+          />
         </motion.div>
 
         <AnimatePresence>

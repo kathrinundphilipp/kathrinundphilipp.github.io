@@ -1,29 +1,12 @@
-import { motion, type Variants } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 interface WaxSealProps {
   initials: string
   broken: boolean
   reduceMotion?: boolean
-}
-
-const sealVariants: Variants = {
-  resting: {
-    scale: 1,
-    rotate: 0,
-    y: 0,
-    opacity: 1,
-  },
-  pressed: {
-    scale: [1, 1.06, 1],
-    transition: { duration: 0.5, ease: [0.33, 0, 0.2, 1] },
-  },
-  broken: {
-    scale: 0.35,
-    rotate: -22,
-    y: -46,
-    opacity: 0,
-    transition: { duration: 0.6, ease: [0.55, 0, 0.35, 1], delay: 0.15 },
-  },
+  /** extra scale factor applied on top of the resting/broken scale, e.g. to
+   * counteract a large parent zoom so the seal keeps a natural size */
+  sizeFactor?: number
 }
 
 const monogramLayers = [
@@ -32,16 +15,20 @@ const monogramLayers = [
   { dx: 0, dy: 0, fill: '#3c5c3d', opacity: 1, blur: 0 },
 ]
 
-export default function WaxSeal({ initials, broken, reduceMotion }: WaxSealProps) {
+export default function WaxSeal({ initials, broken, reduceMotion, sizeFactor = 1 }: WaxSealProps) {
   const [left, right] = initials.split('&').map((s) => s.trim())
 
   return (
     <motion.div
       className="pointer-events-none absolute left-1/2 top-[38%] z-30 w-[23%] max-w-[104px] min-w-[58px] -translate-x-1/2 -translate-y-1/2 [filter:drop-shadow(0_10px_16px_rgba(30,20,8,0.4))]"
-      variants={sealVariants}
-      initial="resting"
-      animate={broken ? 'broken' : 'resting'}
-      transition={reduceMotion ? { duration: 0.01 } : undefined}
+      animate={{ scale: (broken ? 0.35 : 1) * sizeFactor, rotate: broken ? -22 : 0, y: broken ? -46 : 0, opacity: broken ? 0 : 1 }}
+      transition={
+        reduceMotion
+          ? { duration: 0.01 }
+          : broken
+            ? { duration: 0.6, ease: [0.55, 0, 0.35, 1], delay: 0.15 }
+            : { duration: 1.4, ease: [0.65, 0, 0.35, 1] }
+      }
       style={{ transformStyle: 'flat' }}
     >
       <svg viewBox="0 0 200 200" className="h-full w-full">

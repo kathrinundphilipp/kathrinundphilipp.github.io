@@ -34,8 +34,7 @@ export default function EnvelopeFlap({ open, reduceMotion }: EnvelopeFlapProps) 
         style={{
           backfaceVisibility: 'hidden',
           background:
-            'linear-gradient(155deg, #fffdf8 0%, var(--color-cream) 55%, var(--color-cream-dark) 100%)',
-          boxShadow: 'inset 0 -12px 22px -18px rgba(50,43,32,0.35)',
+            'radial-gradient(140% 100% at 50% 0%, var(--color-cream) 0%, var(--color-cream) 65%, var(--color-cream-dark) 100%)',
         }}
       />
       {/* faint paper fibre texture */}
