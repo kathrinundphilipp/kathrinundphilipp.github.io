@@ -4,6 +4,7 @@ import EnvelopeFlap from './EnvelopeFlap'
 import WaxSeal from './WaxSeal'
 import InvitationCard from './InvitationCard'
 import { usePrefersReducedMotion } from '../hooks/usePrefersReducedMotion'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 export type IntroPhase = 'closed' | 'opening' | 'revealed'
 
@@ -29,6 +30,7 @@ function markIntroSeen() {
 
 export default function EnvelopeIntro() {
   const reduceMotion = usePrefersReducedMotion()
+  const isMobile = useIsMobile()
   const skip = reduceMotion || hasSeenIntro()
 
   const [phase, setPhase] = useState<IntroPhase>(skip ? 'revealed' : 'closed')
@@ -58,6 +60,8 @@ export default function EnvelopeIntro() {
     return () => document.body.classList.remove('intro-locked')
   }, [settled])
 
+  const closedScale = isMobile ? 2.5 : 1.08
+
   return (
     <motion.section
       className={
@@ -85,7 +89,12 @@ export default function EnvelopeIntro() {
       <div className="relative z-10 flex flex-col items-center gap-9">
         <motion.div
           className={`relative w-[min(84vw,400px)] ${phase === 'closed' ? 'cursor-pointer' : ''}`}
-          style={{ aspectRatio: '3 / 2', perspective: 1900, transformStyle: 'preserve-3d' }}
+          style={{
+            aspectRatio: '3 / 2',
+            perspective: 1900,
+            transformStyle: 'preserve-3d',
+            transformOrigin: '50% 42%',
+          }}
           onClick={handleOpen}
           role={phase === 'closed' ? 'button' : undefined}
           tabIndex={phase === 'closed' ? 0 : undefined}
@@ -93,10 +102,38 @@ export default function EnvelopeIntro() {
           onKeyDown={(e) => {
             if (phase === 'closed' && (e.key === 'Enter' || e.key === ' ')) handleOpen()
           }}
-          whileHover={phase === 'closed' ? { scale: 1.015, y: -3 } : undefined}
-          whileTap={phase === 'closed' ? { scale: 0.985 } : undefined}
-          transition={{ duration: 0.35, ease: EASE }}
+          initial={false}
+          animate={{ scale: phase === 'closed' ? closedScale : 1 }}
+          whileHover={phase === 'closed' ? { scale: closedScale * 1.01 } : undefined}
+          whileTap={phase === 'closed' ? { scale: closedScale * 0.99 } : undefined}
+          transition={{ duration: reduceMotion ? 0.01 : 1.4, ease: EASE }}
         >
+          {/* fine paper grain, scales together with the envelope */}
+          <div
+            className="pointer-events-none absolute -inset-1 z-40 opacity-[0.5] mix-blend-multiply"
+            style={{
+              backgroundImage:
+                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.28 0 0 0 0 0.24 0 0 0 0 0.16 0 0 0 0.5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+              backgroundSize: '140px 140px',
+            }}
+          />
+
+          {/* subtle fold-crease lines from the corners to the flap point */}
+          <svg
+            className="pointer-events-none absolute inset-0 z-30 h-full w-full"
+            viewBox="0 0 100 66.667"
+            preserveAspectRatio="none"
+          >
+            <motion.g
+              animate={{ opacity: phase === 'revealed' ? 0 : 1 }}
+              transition={{ duration: 0.5, ease: EASE }}
+            >
+              <line x1="0" y1="0" x2="50" y2="40" stroke="rgba(90,72,48,0.16)" strokeWidth="0.35" vectorEffect="non-scaling-stroke" />
+              <line x1="100" y1="0" x2="50" y2="40" stroke="rgba(90,72,48,0.16)" strokeWidth="0.35" vectorEffect="non-scaling-stroke" />
+              <line x1="0" y1="66.667" x2="50" y2="40" stroke="rgba(90,72,48,0.12)" strokeWidth="0.3" vectorEffect="non-scaling-stroke" />
+            </motion.g>
+          </svg>
+
           {/* envelope back panel */}
           <motion.div
             className="absolute inset-0 rounded-[2px]"
@@ -133,24 +170,6 @@ export default function EnvelopeIntro() {
         </motion.div>
 
         <AnimatePresence>
-          {phase === 'closed' && (
-            <motion.div
-              key="prompt"
-              className="flex flex-col items-center gap-2 text-center"
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6, transition: { duration: 0.35 } }}
-              transition={{ duration: 0.7, ease: EASE, delay: 0.3 }}
-            >
-              <p className="font-script text-[19px] italic text-sage-dark">Für Euch</p>
-              <p className="font-sans text-[11px] tracking-[0.25em] text-sage-soft uppercase animate-pulse">
-                Tippe, um den Brief zu öffnen
-              </p>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence>
           {phase === 'revealed' && (
             <motion.div
               key="scroll-cue"
@@ -172,6 +191,26 @@ export default function EnvelopeIntro() {
           )}
         </AnimatePresence>
       </div>
+
+      <AnimatePresence>
+        {phase === 'closed' && (
+          <motion.div
+            key="prompt"
+            className="pointer-events-none absolute inset-x-0 bottom-[6%] z-50 flex flex-col items-center gap-2 text-center sm:bottom-[8%]"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6, transition: { duration: 0.35 } }}
+            transition={{ duration: 0.7, ease: EASE, delay: 0.5 }}
+          >
+            <p className="font-script text-[19px] italic text-sage-dark drop-shadow-[0_1px_2px_rgba(255,253,248,0.8)]">
+              Für Euch
+            </p>
+            <p className="font-sans text-[11px] tracking-[0.25em] text-sage-soft uppercase animate-pulse drop-shadow-[0_1px_2px_rgba(255,253,248,0.8)]">
+              Tippe, um den Brief zu öffnen
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.section>
   )
 }
