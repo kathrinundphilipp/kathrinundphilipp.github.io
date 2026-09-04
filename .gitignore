@@ -9,8 +9,12 @@ lerna-debug.log*
 
 node_modules
 dist
+dist-local
 dist-ssr
+.standalone-build
+hochzeitsseite.html
 *.local
+*.zip
 
 .claude
 run-dev.cmd
