@@ -8,30 +8,13 @@ import { useIsMobile } from '../hooks/useIsMobile'
 
 export type IntroPhase = 'closed' | 'opening' | 'revealed'
 
-const STORAGE_KEY = 'wedding-intro-seen'
 const EASE = [0.65, 0, 0.35, 1] as const
 const OPENING_DURATION_MS = 3400
-
-function hasSeenIntro() {
-  try {
-    return window.localStorage.getItem(STORAGE_KEY) === '1'
-  } catch {
-    return false
-  }
-}
-
-function markIntroSeen() {
-  try {
-    window.localStorage.setItem(STORAGE_KEY, '1')
-  } catch {
-    /* ignore */
-  }
-}
 
 export default function EnvelopeIntro() {
   const reduceMotion = usePrefersReducedMotion()
   const isMobile = useIsMobile()
-  const skip = reduceMotion || hasSeenIntro()
+  const skip = reduceMotion
 
   const [phase, setPhase] = useState<IntroPhase>(skip ? 'revealed' : 'closed')
   const [settled, setSettled] = useState(skip)
@@ -49,7 +32,6 @@ export default function EnvelopeIntro() {
 
   useEffect(() => {
     if (phase !== 'revealed') return
-    markIntroSeen()
     const t = setTimeout(() => setSettled(true), reduceMotion ? 100 : 650)
     return () => clearTimeout(t)
   }, [phase, reduceMotion])
