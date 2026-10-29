@@ -1,0 +1,20 @@
+[
+  {
+    "code": "ida",
+    "umschlag": "Ida",
+    "anrede": "Liebe Ida",
+    "personen": 1
+  },
+  {
+    "code": "mueller",
+    "umschlag": "Familie Müller-Lüdenscheidt",
+    "anrede": "Liebe Familie Müller-Lüdenscheidt",
+    "personen": 4
+  },
+  {
+    "code": "anna-tom",
+    "umschlag": "Anna & Tom",
+    "anrede": "Liebe Anna und lieber Tom",
+    "personen": 2
+  }
+]

@@ -1,0 +1,17 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kathrin und Philipp//Einladung//DE
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:hochzeit-kathrin-philipp-20270925@kathrinundphilipp.github.io
+DTSTAMP:20261028T120000Z
+DTSTART;VALUE=DATE:20270925
+DTEND;VALUE=DATE:20270926
+SUMMARY:Hochzeit Kathrin & Philipp
+LOCATION:Stadbroekermolen\, Jacqueline Roufsweg 1\, 6136 VG Sittard\, Niederlande
+DESCRIPTION:Alle Infos: https://kathrinundphilipp.github.io/
+URL:https://kathrinundphilipp.github.io/
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR

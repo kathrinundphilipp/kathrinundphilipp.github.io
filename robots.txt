@@ -1,0 +1,15 @@
+# Die Einladung soll nicht in Suchmaschinen erscheinen.
+# Die Save-the-Date-Seite (/save-the-date/) bleibt wie bisher erreichbar.
+
+# Link-Vorschauen (WhatsApp, Facebook, Telegram, Signal …) dürfen die Seite lesen
+User-agent: facebookexternalhit
+User-agent: Facebot
+User-agent: WhatsApp
+User-agent: TelegramBot
+User-agent: Twitterbot
+User-agent: Slackbot
+Allow: /
+
+User-agent: *
+Allow: /save-the-date/
+Disallow: /
