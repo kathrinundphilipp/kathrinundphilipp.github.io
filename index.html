@@ -28,7 +28,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 <link rel="preload" as="image" type="image/avif" href="assets/poster-1080.avif" imagesrcset="assets/poster-720.avif 720w, assets/poster-1080.avif 1080w" imagesizes="100vw" fetchpriority="high">
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/script-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/eyesome.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/montserrat-500-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/montserrat-300-latin.woff2" crossorigin>
 
@@ -296,10 +296,11 @@ p { margin: 0 0 1em; hyphens: auto; text-wrap: pretty; }
 .hero .label { font-size: clamp(12px, 3.4vw, 14px); }
 .hero .label { font-size: clamp(12px, 3.4cqi, 14px); }
 .hero-date {
-  font-size: clamp(40px, 11.4vw, 80px);
-  font-size: clamp(40px, 11.4cqi, 80px);
-  margin: .36em 0 .42em; color: var(--ink);
-  max-width: 100%; text-wrap: balance;
+  /* passt immer einzeilig in die Karte: Eyesome ist ca. 7,7 em breit */
+  font-size: clamp(30px, calc((100vw - 72px) / 7.9), 80px);
+  font-size: clamp(30px, calc((100cqi - 72px) / 7.9), 80px);
+  margin: .3em 0 .95em; color: var(--ink);
+  max-width: 100%; white-space: nowrap; line-height: 1.2;
 }
 .hero-names { font-size: clamp(13px, 3.9vw, 16px) !important; }
 .hero-names { font-size: clamp(13px, 3.9cqi, 16px) !important; }
@@ -317,6 +318,7 @@ p { margin: 0 0 1em; hyphens: auto; text-wrap: pretty; }
 .greet-name { font: 400 clamp(38px, 11vw, 56px)/1.15 var(--script); color: var(--ink); margin: .2em 0 .7em; text-wrap: balance; hyphens: manual; }
 .greet-name { font-size: clamp(38px, 11cqi, 56px); }
 .signature { margin-top: 2.4em; }
+.greet-name .comma { margin-left: -.32em; }
 
 /* Countdown */
 .count { display: flex; justify-content: center; margin: 2.2em 0 .6em; }
@@ -741,7 +743,7 @@ const INHALT = {
     const visible = Math.min(bw, sw);
     const maxW = Math.min(bw * 0.8, visible - 40);
     inkName.style.setProperty("--nw", maxW + "px");
-    const maxSize = bw * 0.1, minSize = Math.max(24, bw * 0.05);
+    const maxSize = bw * 0.125, minSize = Math.max(24, bw * 0.05);
     let size = maxSize;
     for (let i = 0; i < 30; i++) {
       inkName.style.setProperty("--nf", size + "px");
@@ -923,7 +925,7 @@ const INHALT = {
     // Begrüßung
     const anrede = gast && has(gast.anrede) ? gast.anrede : D.begruessung.anredeOhneCode;
     out.push(`<section class="sec" id="willkommen" aria-label="Begrüßung"><div class="wrap">
-      <p class="greet-name rv">${inline(anrede)},</p>
+      <p class="greet-name rv">${inline(anrede)}<span class="comma">,</span></p>
       <div class="lead rv" style="--i:1">${paras(D.begruessung.text)}</div>
       <p class="label signature rv" style="--i:2">${inline(D.begruessung.unterschrift)}</p>
     </div></section>`);
