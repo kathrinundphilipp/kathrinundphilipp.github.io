@@ -29,34 +29,44 @@
 
 <link rel="preload" as="image" type="image/avif" href="assets/poster-1080.avif" imagesrcset="assets/poster-720.avif 720w, assets/poster-1080.avif 1080w" imagesizes="100vw" fetchpriority="high">
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/script-latin.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/cormorant-latin.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/montserrat-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/montserrat-500-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/montserrat-300-latin.woff2" crossorigin>
 
 <style>
 /* ---------- Schriften (selbst gehostet, nur benötigte Schnitte) ---------- */
+/* Eyesome Script: Datei als assets/fonts/eyesome.woff2 ablegen. Bis dahin springt die Ersatzschrift ein. */
+@font-face { font-family: "Eyesome"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url(assets/fonts/eyesome.woff2) format("woff2"); }
 @font-face { font-family: "Script"; font-style: normal; font-weight: 400; font-display: swap;
   src: url(assets/fonts/script-latin.woff2) format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 @font-face { font-family: "Script"; font-style: normal; font-weight: 400; font-display: swap;
   src: url(assets/fonts/script-latin-ext.woff2) format("woff2");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-@font-face { font-family: "Cormorant"; font-style: normal; font-weight: 300 600; font-display: swap;
-  src: url(assets/fonts/cormorant-latin.woff2) format("woff2");
+/* Montserrat als feste Schnitte (zuverlässiger als die variable Datei) */
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 200; font-display: swap;
+  src: url(assets/fonts/montserrat-200-latin.woff2) format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-@font-face { font-family: "Cormorant"; font-style: normal; font-weight: 300 600; font-display: swap;
-  src: url(assets/fonts/cormorant-latin-ext.woff2) format("woff2");
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 200; font-display: swap;
+  src: url(assets/fonts/montserrat-200-latin-ext.woff2) format("woff2");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-@font-face { font-family: "Cormorant"; font-style: italic; font-weight: 300 600; font-display: swap;
-  src: url(assets/fonts/cormorant-italic-latin.woff2) format("woff2");
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 300; font-display: swap;
+  src: url(assets/fonts/montserrat-300-latin.woff2) format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-@font-face { font-family: "Cormorant"; font-style: italic; font-weight: 300 600; font-display: swap;
-  src: url(assets/fonts/cormorant-italic-latin-ext.woff2) format("woff2");
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 300; font-display: swap;
+  src: url(assets/fonts/montserrat-300-latin-ext.woff2) format("woff2");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
-@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 400 600; font-display: swap;
-  src: url(assets/fonts/montserrat-latin.woff2) format("woff2");
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url(assets/fonts/montserrat-400-latin.woff2) format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
-@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 400 600; font-display: swap;
-  src: url(assets/fonts/montserrat-latin-ext.woff2) format("woff2");
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 400; font-display: swap;
+  src: url(assets/fonts/montserrat-400-latin-ext.woff2) format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 500; font-display: swap;
+  src: url(assets/fonts/montserrat-500-latin.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Montserrat"; font-style: normal; font-weight: 500; font-display: swap;
+  src: url(assets/fonts/montserrat-500-latin-ext.woff2) format("woff2");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
 
 /* ---------- Grundwerte ---------- */
@@ -64,18 +74,22 @@
   color-scheme: light only;
   --cream: #f7ede4;
   --ivory: #fbf6ef;
-  --ink: #1f1f1c;
-  --ink-soft: #46443d;
-  --wax: #1d3815;
-  --sage: #37493a;
+  /* Palette: #74896F · #7D9883 · #576D53 · #567258 · #465C47 */
+  --ink: #2b382c;          /* Fließtext: sehr dunkles Grün */
+  --ink-soft: #4a5a4b;
+  --wax: #465c47;          /* Überschriften, Labels, Rahmen der Buttons */
+  --btn: #576d53;          /* gefüllte Buttons */
+  --sage: #465c47;         /* Hintergrund Desktop/Querformat */
+  --line: #7d9883;         /* Linien in Formular, FAQ, Countdown, Zeitleiste */
+  --mid: #74896f;
   --gold: #b39a62;
   --gold-soft: rgba(179, 154, 98, .55);
   --ease: cubic-bezier(.22, 1, .36, 1);
   --dur: 1000ms;
   --col: 100%;
-  --serif: "Cormorant", "Cormorant Garamond", Garamond, "Times New Roman", serif;
   --sans: "Montserrat", "Helvetica Neue", Arial, sans-serif;
-  --script: "Script", "Snell Roundhand", cursive;
+  --serif: var(--sans);
+  --script: "Eyesome", "Script", "Snell Roundhand", cursive;
   --track: .26em;
   --gap: clamp(96px, 22vw, 168px);
   --safe-t: env(safe-area-inset-top, 0px);
@@ -103,8 +117,8 @@ body {
   margin: 0; min-height: 100%;
   background: var(--sage);
   color: var(--ink);
-  font: 400 clamp(19px, 4.9vw, 21px)/1.62 var(--serif);
-  font-variant-numeric: oldstyle-nums proportional-nums;
+  font: 400 clamp(17px, 4.5vw, 18px)/1.75 var(--sans);
+  font-variant-numeric: lining-nums proportional-nums;
   font-kerning: normal;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -176,8 +190,8 @@ button { cursor: pointer; }
   transform: translateX(-50%);
   margin: 0; white-space: nowrap;
   color: #fff;
-  font: 500 15px/1 var(--serif);
-  font-size: clamp(15px, 4.2vw, 17px);
+  font: 500 13px/1 var(--sans);
+  font-size: clamp(12.5px, 3.5vw, 14px);
   letter-spacing: .35em; margin-right: -.35em;
   text-transform: uppercase;
   text-shadow: 0 1px 8px rgba(0,0,0,.55);
@@ -229,12 +243,11 @@ html.intro main { visibility: hidden; content-visibility: hidden; }
   font-variant-numeric: lining-nums;
 }
 h2 {
-  font: 300 clamp(34px, 9.4vw, 50px)/1.08 var(--serif);
-  font: 300 clamp(34px, 9.4cqi, 50px)/1.08 var(--serif);
-  letter-spacing: -.005em; margin: .45em 0 0; color: var(--ink);
+  font: 300 clamp(25px, 6.9vw, 34px)/1.25 var(--sans);
+  font: 300 clamp(25px, 6.9cqi, 34px)/1.25 var(--sans);
+  letter-spacing: .01em; margin: .7em 0 0; color: var(--wax);
   text-wrap: balance; hyphens: manual;
 }
-h2 em, .italic { font-style: italic; font-weight: 300; }
 h3 {
   font: 500 clamp(11.5px, 3.1vw, 12.5px)/1.6 var(--sans);
   font: 500 clamp(11.5px, 3.1cqi, 12.5px)/1.6 var(--sans);
@@ -251,20 +264,20 @@ p { margin: 0 0 1em; hyphens: auto; text-wrap: pretty; }
 .ph {
   background: rgba(196, 98, 45, .12); color: #7a3412;
   border-bottom: 1px dashed rgba(122, 52, 18, .6);
-  padding: 0 .15em; font-style: normal; font-family: var(--serif);
+  padding: 0 .15em; font-style: normal; font-family: var(--sans); font-weight: 400;
   letter-spacing: 0; text-transform: none; border-radius: 0;
 }
-.label .ph, h3 .ph, .btn .ph { font-size: 1.35em; }
+.label .ph, h3 .ph, .btn .ph { font-size: 1.2em; }
 
 /* Trenner mit Monogramm */
 .divider { display: flex; align-items: center; justify-content: center; gap: 18px; color: var(--gold); }
 .divider::before, .divider::after { content: ""; height: 1px; width: 64px; background: var(--gold-soft); }
-.mono { font: 500 19px/1 var(--serif); letter-spacing: .04em; font-variant-numeric: lining-nums; }
+.mono { font: 300 14px/1 var(--sans); letter-spacing: .28em; margin-right: -.28em; }
 .mono-ring {
   display: grid; place-items: center; width: 68px; height: 68px; margin: 0 auto;
   border-radius: 50%; border: 1px solid var(--gold); color: var(--gold);
   box-shadow: 0 0 0 4px var(--cream), 0 0 0 5px var(--gold-soft);
-  font: 500 22px/1 var(--serif); letter-spacing: .03em;
+  font: 300 17px/1 var(--sans); letter-spacing: .18em; text-indent: .18em;
 }
 
 /* Hero als gedruckte Karte */
@@ -290,8 +303,8 @@ p { margin: 0 0 1em; hyphens: auto; text-wrap: pretty; }
 }
 .hero-names { font-size: clamp(13px, 3.9vw, 16px) !important; }
 .hero-names { font-size: clamp(13px, 3.9cqi, 16px) !important; }
-.hero-place { margin-top: 2.2em; font-style: italic; font-weight: 300; font-size: clamp(19px, 5vw, 22px); color: var(--ink-soft); }
-.hero-place { margin-top: 2.2em; font-style: italic; font-weight: 300; font-size: clamp(19px, 5cqi, 22px); color: var(--ink-soft); }
+.hero-place { margin-top: 2.4em; font-weight: 400; font-size: clamp(14px, 3.9vw, 16px); letter-spacing: .06em; color: var(--ink-soft); }
+.hero-place { font-size: clamp(14px, 3.9cqi, 16px); }
 .hero .mono-ring { margin-bottom: 2.4em; }
 .scroll-cue {
   position: absolute; left: 50%; bottom: 28px; width: 1px; height: 44px;
@@ -301,32 +314,29 @@ p { margin: 0 0 1em; hyphens: auto; text-wrap: pretty; }
 @keyframes cue { 0% { transform: scaleY(0); opacity: 0; } 30% { opacity: 1; } 70% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
 
 /* Begrüßung */
-.greet-name { font: italic 300 clamp(30px, 8.6vw, 44px)/1.15 var(--serif); margin: .5em 0 .8em; text-wrap: balance; hyphens: manual; }
-.greet-name { font: italic 300 clamp(30px, 8.6cqi, 44px)/1.15 var(--serif); margin: .5em 0 .8em; text-wrap: balance; hyphens: manual; }
-.signature { font-size: clamp(44px, 12vw, 60px); margin-top: .5em; color: var(--ink); }
-.signature { font-size: clamp(44px, 12cqi, 60px); margin-top: .5em; color: var(--ink); }
+.greet-name { font: 400 clamp(38px, 11vw, 56px)/1.15 var(--script); color: var(--ink); margin: .2em 0 .7em; text-wrap: balance; hyphens: manual; }
+.greet-name { font-size: clamp(38px, 11cqi, 56px); }
+.signature { margin-top: 2.4em; }
 
 /* Countdown */
 .count { display: flex; justify-content: center; margin: 2.2em 0 .6em; }
 .count > div { flex: 1 1 0; max-width: 8.4rem; padding: 0 .4rem; }
-.count > div + div { border-left: 1px solid var(--gold-soft); }
+.count > div + div { border-left: 1px solid var(--line); }
 .count .num {
-  display: block; font: 300 clamp(40px, 12vw, 58px)/1 var(--serif);
-  display: block; font: 300 clamp(40px, 12cqi, 58px)/1 var(--serif);
-  font-variant-numeric: oldstyle-nums tabular-nums;
+  display: block; font: 200 clamp(34px, 10vw, 50px)/1 var(--sans);
+  display: block; font: 200 clamp(34px, 10cqi, 50px)/1 var(--sans);
+  font-variant-numeric: lining-nums tabular-nums; color: var(--wax);
 }
 .count .unit { display: block; margin-top: .9em; }
-.count-done { font: italic 300 clamp(26px, 7vw, 34px)/1.3 var(--serif); margin: 1.6em 0 .4em; }
-.count-done { font: italic 300 clamp(26px, 7cqi, 34px)/1.3 var(--serif); margin: 1.6em 0 .4em; }
-.weekday { font: italic 300 clamp(24px, 6.6vw, 30px)/1.3 var(--serif); margin: .6em 0 0; }
-.weekday { font: italic 300 clamp(24px, 6.6cqi, 30px)/1.3 var(--serif); margin: .6em 0 0; }
+.count-done { font: 400 clamp(36px, 10vw, 50px)/1.2 var(--script); margin: 1.2em 0 .4em; }
+.weekday { font: 300 clamp(17px, 4.6vw, 20px)/1.4 var(--sans); letter-spacing: .04em; margin: .5em 0 0; }
 
 /* Buttons */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: .6em;
   min-height: 52px; min-width: 44px; padding: 14px 26px;
   border: 1px solid var(--wax); border-radius: 1px;
-  background: linear-gradient(var(--wax), var(--wax)) no-repeat left / 0% 100%;
+  background: linear-gradient(var(--btn), var(--btn)) no-repeat left / 0% 100%;
   color: var(--wax); text-decoration: none;
   font: 500 clamp(11.5px, 3.1vw, 12.5px)/1.3 var(--sans);
   font: 500 clamp(11.5px, 3.1cqi, 12.5px)/1.3 var(--sans);
@@ -336,10 +346,10 @@ p { margin: 0 0 1em; hyphens: auto; text-wrap: pretty; }
 }
 .btn > span { margin-right: calc(var(--track) * -1); }
 .btn:active { background-size: 100% 100%; color: var(--cream); transition-duration: 200ms; }
-.btn-solid { background-size: 100% 100%; color: var(--cream); }
+.btn-solid { background-image: linear-gradient(var(--btn), var(--btn)); background-size: 100% 100%; color: var(--cream); border-color: var(--btn); }
 @media (hover: hover) {
   .btn:hover { background-size: 100% 100%; color: var(--cream); }
-  .btn-solid:hover { background-color: var(--sage); }
+  .btn-solid:hover { background-image: linear-gradient(var(--wax), var(--wax)); border-color: var(--wax); }
   .textlink:hover { text-decoration-color: var(--wax); }
 }
 .btns { display: flex; flex-direction: column; align-items: center; gap: 14px; margin-top: 2em; }
@@ -356,18 +366,16 @@ p { margin: 0 0 1em; hyphens: auto; text-wrap: pretty; }
 .timeline li { position: relative; padding-bottom: 2.6em; }
 .timeline li:not(:last-child)::after {
   content: ""; display: block; width: 1px; height: 2.2em;
-  margin: 1.4em auto 0; background: var(--gold-soft);
+  margin: 1.4em auto 0; background: var(--line);
 }
 .timeline li:not(:last-child) { padding-bottom: 1.2em; }
 .timeline li:last-child { padding-bottom: 0; }
-.t-time { display: block; font: 300 clamp(30px, 8.6vw, 40px)/1.1 var(--serif); font-variant-numeric: oldstyle-nums; }
-.t-time { display: block; font: 300 clamp(30px, 8.6cqi, 40px)/1.1 var(--serif); font-variant-numeric: oldstyle-nums; }
+.t-time { display: block; font: 300 clamp(24px, 6.6vw, 30px)/1.2 var(--sans); font-variant-numeric: lining-nums tabular-nums; color: var(--wax); letter-spacing: .04em; }
+.t-time { font-size: clamp(24px, 6.6cqi, 30px); }
 .t-title { display: block; margin-top: .55em; }
 .t-text { display: block; margin-top: .4em; color: var(--ink-soft); }
 
 /* Ort */
-.venue { font: 300 clamp(32px, 9vw, 46px)/1.1 var(--serif); margin: .45em 0 .2em; }
-.venue { font: 300 clamp(32px, 9cqi, 46px)/1.1 var(--serif); margin: .45em 0 .2em; }
 address { font-style: normal; margin-top: 1em; }
 address a { text-decoration: none; display: inline-block; padding: 6px 4px; border-bottom: 1px solid var(--gold); line-height: 1.5; }
 
@@ -387,9 +395,9 @@ form { margin-top: 2.6em; text-align: left; }
 .field:focus-within > label { color: var(--ink); }
 input[type=text], textarea {
   display: block; width: 100%;
-  border: 0; border-bottom: 1px solid rgba(29, 56, 21, .45); border-radius: 0;
+  border: 0; border-bottom: 1px solid var(--line); border-radius: 0;
   background: transparent; padding: 10px 0 10px;
-  font-size: max(16px, 1.08em); line-height: 1.45;
+  font-size: max(16px, 1em); line-height: 1.5;
   box-shadow: inset 0 -1px 0 transparent;
   transition: border-color 600ms var(--ease), box-shadow 600ms var(--ease);
   -webkit-appearance: none; appearance: none;
@@ -397,20 +405,20 @@ input[type=text], textarea {
 }
 textarea { resize: vertical; min-height: 7.2em; }
 input[type=text]:focus, textarea:focus { outline: none; border-bottom-color: var(--wax); box-shadow: inset 0 -1px 0 var(--wax); }
-input::placeholder, textarea::placeholder { color: #8b8578; opacity: 1; font-style: italic; }
+input::placeholder, textarea::placeholder { color: #6f7a6c; opacity: 1; font-weight: 300; }
 fieldset { border: 0; padding: 0; margin: 0 0 2.1em; min-width: 0; }
 .choice { display: grid; gap: 12px; }
 .choice label {
   position: relative; display: flex; align-items: center; gap: 16px;
   min-height: 60px; padding: 14px 18px;
-  border: 1px solid rgba(29, 56, 21, .35); cursor: pointer;
+  border: 1px solid var(--line); cursor: pointer;
   transition: border-color 600ms var(--ease), background-color 600ms var(--ease);
   line-height: 1.3;
 }
 .choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
 .choice .dot { flex: none; width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--wax); display: grid; place-items: center; }
 .choice .dot::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--wax); transform: scale(0); transition: transform 500ms var(--ease); }
-.choice input:checked + label { border-color: var(--wax); background: rgba(29, 56, 21, .05); }
+.choice input:checked + label { border-color: var(--wax); background: rgba(70, 92, 71, .07); }
 .choice input:checked + label .dot::after { transform: scale(1); }
 .choice input:focus-visible + label { outline: 1px solid var(--wax); outline-offset: 3px; }
 @media (hover: hover) { .choice label:hover { border-color: var(--wax); } }
@@ -427,10 +435,10 @@ fieldset { border: 0; padding: 0; margin: 0 0 2.1em; min-width: 0; }
 }
 .stepper button.plus::after { transform: translate(-50%, -50%) rotate(90deg); }
 .stepper button:disabled { opacity: .3; cursor: default; }
-@media (hover: hover) { .stepper button:not(:disabled):hover { background: rgba(29, 56, 21, .07); } }
+@media (hover: hover) { .stepper button:not(:disabled):hover { background: rgba(70, 92, 71, .08); } }
 .stepper output {
   min-width: 2.6em; text-align: center;
-  font: 300 40px/1 var(--serif); font-variant-numeric: lining-nums tabular-nums;
+  font: 200 36px/1 var(--sans); font-variant-numeric: lining-nums tabular-nums; color: var(--wax);
 }
 .note { font-size: .88em; color: var(--ink-soft); margin: .7em 0 0; }
 .persons { overflow: hidden; transition: opacity 600ms var(--ease); }
@@ -449,20 +457,18 @@ fieldset { border: 0; padding: 0; margin: 0 0 2.1em; min-width: 0; }
 
 /* Ansprechpartner */
 .people { display: grid; gap: 2.6em; margin-top: 2.4em; }
-.person-name { font: 400 clamp(24px, 6.6vw, 30px)/1.2 var(--serif); margin: 0 0 .15em; }
-.person-name { font: 400 clamp(24px, 6.6cqi, 30px)/1.2 var(--serif); margin: 0 0 .15em; }
+.person-name { font: 400 clamp(19px, 5.2vw, 22px)/1.3 var(--sans); margin: 0 0 .2em; color: var(--wax); }
 .person-role { margin-bottom: .8em; }
 .person-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 1em; }
 .person-links .btn { min-width: 140px; padding-inline: 18px; }
 
 /* FAQ */
-.faq { margin-top: 2.4em; text-align: left; border-top: 1px solid var(--gold-soft); }
-.faq details { border-bottom: 1px solid var(--gold-soft); }
+.faq { margin-top: 2.4em; text-align: left; border-top: 1px solid var(--line); }
+.faq details { border-bottom: 1px solid var(--line); }
 .faq summary {
   list-style: none; cursor: pointer; position: relative;
   min-height: 64px; padding: 18px 48px 18px 0; display: flex; align-items: center;
-  font: 400 clamp(21px, 5.6vw, 24px)/1.3 var(--serif);
-  font: 400 clamp(21px, 5.6cqi, 24px)/1.3 var(--serif);
+  font: 400 clamp(17px, 4.6vw, 18px)/1.45 var(--sans); color: var(--wax);
 }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::before, .faq summary::after {
@@ -478,13 +484,13 @@ fieldset { border: 0; padding: 0; margin: 0 0 2.1em; min-width: 0; }
 .photos { display: grid; gap: 14px; margin-top: 2.4em; }
 .photos figure { margin: 0; }
 .photos img { width: 100%; height: auto; }
-.photos figcaption { margin-top: .6em; font-style: italic; font-size: .9em; color: var(--ink-soft); }
+.photos figcaption { margin-top: .6em; font-size: .9em; color: var(--ink-soft); }
 @media (min-width: 560px) { .photos { grid-template-columns: 1fr 1fr; } .photos figure:first-child { grid-column: 1 / -1; } }
 
 /* Fußzeile */
 footer { padding: calc(var(--gap) * .6) 24px calc(64px + var(--safe-b)); text-align: center; }
 footer .mono-ring { margin-bottom: 2em; }
-footer .date { font: 300 22px/1 var(--serif); letter-spacing: .2em; margin-top: .9em; margin-right: -.2em; font-variant-numeric: oldstyle-nums; }
+footer .date { font: 300 17px/1 var(--sans); letter-spacing: .3em; margin-top: 1.1em; margin-right: -.3em; color: var(--wax); }
 
 /* Musik */
 #music {
@@ -888,7 +894,7 @@ const INHALT = {
     .then(list => { gast = code && Array.isArray(list) ? list.find(g => String(g.code).toLowerCase() === code) || null : null; })
     .catch(() => {})
     .finally(() => {
-      (document.fonts && document.fonts.load ? document.fonts.load('40px "Script"') : Promise.resolve())
+      (document.fonts && document.fonts.load ? Promise.allSettled([document.fonts.load('40px "Eyesome"'), document.fonts.load('40px "Script"')]) : Promise.resolve())
         .catch(() => {}).finally(applyGuest);
     });
 
@@ -919,7 +925,7 @@ const INHALT = {
     out.push(`<section class="sec" id="willkommen" aria-label="Begrüßung"><div class="wrap">
       <p class="greet-name rv">${inline(anrede)},</p>
       <div class="lead rv" style="--i:1">${paras(D.begruessung.text)}</div>
-      <p class="script signature rv" style="--i:2">${inline(D.begruessung.unterschrift)}</p>
+      <p class="label signature rv" style="--i:2">${inline(D.begruessung.unterschrift)}</p>
     </div></section>`);
 
     // Datum + Countdown + Kalender

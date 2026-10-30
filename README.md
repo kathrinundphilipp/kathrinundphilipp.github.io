@@ -95,6 +95,7 @@ Alternativ geht das direkt im Browser auf github.com: Datei öffnen → Stift-Sy
 ## Technik
 
 - Statisch, ohne Build-Tools. CSS und JS stehen direkt in `index.html`.
-- Schriften selbst gehostet: Mrs Saint Delafield (Script), Cormorant Garamond, Montserrat (alle SIL Open Font License).
+- Schriften selbst gehostet: Eyesome Script (Datei `assets/fonts/eyesome.woff2`, die Lizenz muss die Web-Nutzung erlauben) und Montserrat 200–500 (SIL Open Font License). Solange `eyesome.woff2` fehlt, springt Mrs Saint Delafield als Script-Ersatz ein.
+- Farben (oben in `index.html` unter `:root`): Creme #F7EDE4, Grüntöne #465C47 · #576D53 · #7D9883 · #74896F, Gold #B39A62 nur für feine Akzente.
 - Intro-Video: 720×1280, H.264, faststart, ca. 1,1 MB. Der Name auf dem Umschlag wird relativ zum Bild positioniert. Das fallende Siegel „überdeckt“ die Tinte über eine Maske, die pro Videoframe der gemessenen Siegelbahn folgt (`SEAL` in `index.html`).
 - Wird ein neues Video eingesetzt, müssen `SEAL` und `FADE_FROM`/`FADE_TO` neu abgestimmt werden.
