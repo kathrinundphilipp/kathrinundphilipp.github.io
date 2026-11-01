@@ -193,14 +193,16 @@
     "umschlag": "Lorraine & David",
     "anrede": "Liebe Lorraine, lieber David",
     "personen": 2,
-    "form": "ihr"
+    "form": "ihr",
+    "kinder": true
   },
   {
     "code": "i",
     "umschlag": "Ines",
     "anrede": "Liebe Ines",
     "personen": 1,
-    "form": "du"
+    "form": "du",
+    "kinder": true
   },
   {
     "code": "ml",
@@ -228,7 +230,8 @@
     "umschlag": "Janine & Michael",
     "anrede": "Liebe Janine, lieber Michael",
     "personen": 2,
-    "form": "ihr"
+    "form": "ihr",
+    "kinder": true
   },
   {
     "code": "jh",
@@ -284,7 +287,8 @@
     "umschlag": "Lorena & Markus",
     "anrede": "Liebe Lorena, lieber Markus",
     "personen": 2,
-    "form": "ihr"
+    "form": "ihr",
+    "kinder": true
   },
   {
     "code": "it",
@@ -410,7 +414,8 @@
     "umschlag": "Lea & Lukas",
     "anrede": "Liebe Lea, lieber Lukas",
     "personen": 2,
-    "form": "ihr"
+    "form": "ihr",
+    "kinder": true
   },
   {
     "code": "mo",
