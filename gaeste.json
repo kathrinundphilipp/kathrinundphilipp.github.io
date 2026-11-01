@@ -45,7 +45,7 @@
     "code": "roj",
     "umschlag": "Ruth, Oliver & Johann",
     "anrede": "Liebe Ruth, lieber Oliver, lieber Johann",
-    "personen": 2,
+    "personen": 3,
     "form": "ihr"
   },
   {
@@ -312,7 +312,7 @@
     "umschlag": "Luca & Ellen",
     "anrede": "Liebe Ellen, lieber Luca",
     "personen": 2,
-    "form": "du"
+    "form": "ihr"
   },
   {
     "code": "pc",
