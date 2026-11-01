@@ -461,8 +461,8 @@ fieldset { border: 0; padding: 0; margin: 0 0 2.1em; min-width: 0; }
 .people { display: grid; gap: 2.6em; margin-top: 2.4em; }
 .person-name { font: 400 clamp(19px, 5.2vw, 22px)/1.3 var(--sans); margin: 0 0 .2em; color: var(--wax); }
 .person-role { margin-bottom: .8em; }
-.person-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 1em; }
-.person-links .btn { min-width: 140px; padding-inline: 18px; }
+.person-links { display: flex; justify-content: center; gap: 10px; margin-top: 1em; }
+.person-links .btn { flex: 1 1 0; min-width: 0; max-width: 150px; padding-inline: 10px; }
 
 /* FAQ */
 .faq { margin-top: 2.4em; text-align: left; border-top: 1px solid var(--line); }
@@ -604,7 +604,7 @@ const INHALT = {
     label: "Der Tag",
     titel: "25. September 2027",
     wochentag: "Samstag",
-    countdownBis: "2027-09-25T00:00:00+02:00",
+    countdownBis: "2027-09-25T15:00:00+02:00",   // Ankunft der Gäste
     kalender: {
       ics: "assets/hochzeit.ics",
       googleTitel: "Hochzeit Kathrin & Philipp",
@@ -637,11 +637,12 @@ const INHALT = {
 
   anreise: {
     label: "Anreise",
-    titel: "Anfahrt, Parken & Unterkünfte",
+    titel: "Anfahrt & Parken",
     anfahrt: "Den Weg zur Stadbroekermolen {findest du|findet ihr} hier:",
     anfahrtLink: "https://maps.app.goo.gl/ZCoAT41YKfuuz5Gu6",
-    parken: "[Infos zum Parken]",
-    unterkuenfte: "[Hotels und Unterkünfte in der Nähe]"
+    parken: "Direkt vor der Location stehen genügend Parkplätze zur Verfügung.",
+    // leer = Block wird nicht angezeigt
+    unterkuenfte: ""
   },
 
   dresscode: {
@@ -681,23 +682,21 @@ const INHALT = {
   },
 
   ansprechpartner: {
-    label: "Überraschungen",
-    titel: "{Du planst|Ihr plant} eine Überraschung?",
-    text: "Dann {wende dich|wendet euch} gern an unsere Trauzeugen:",
+    label: "Trauzeugen",
+    titel: "Psst … Überraschungen?",
+    text: "Falls {du|ihr} heimlich etwas für uns {vorbereitest|vorbereitet}: Unsere Trauzeugen sind {deine|eure} Komplizen! {Melde dich|Meldet euch} einfach bei ihnen, sie wissen, wann der perfekte Moment dafür ist.",
     personen: [
-      { name: "[Name]", rolle: "[Trauzeugin / Trauzeuge]", telefon: "", whatsapp: true },
-      { name: "[Name]", rolle: "[Trauzeugin / Trauzeuge]", telefon: "", whatsapp: true }
+      { name: "Milena", rolle: "", telefon: "+49 151 64695887", whatsapp: true },
+      { name: "Eva", rolle: "", telefon: "+49 178 2120679", whatsapp: true },
+      { name: "Lars", rolle: "", telefon: "+49 1577 1900039", whatsapp: true }
     ]
   },
 
   faq: {
     label: "Gut zu wissen",
     titel: "Fragen & Antworten",
-    fragen: [
-      { frage: "[Frage]", antwort: "[Antwort]" },
-      { frage: "[Frage]", antwort: "[Antwort]" },
-      { frage: "[Frage]", antwort: "[Antwort]" }
-    ]
+    // Leer = Sektion wird nicht angezeigt. Beispiel: { frage: "…", antwort: "…" }
+    fragen: []
   },
 
   // Optional: Fotos von uns. Leer lassen = Sektion wird nicht angezeigt.
@@ -972,8 +971,8 @@ const INHALT = {
     const a = D.anreise;
     out.push(sec("anreise", a.label, a.titel, `<div class="blocks">
       <div class="rv"><h3>Anfahrt</h3>${paras(a.anfahrt)}${has(a.anfahrtLink) ? `<a class="btn" href="${esc(a.anfahrtLink)}" target="_blank" rel="noopener"><span>In Google Maps öffnen</span></a>` : ""}</div>
-      <div class="rv"><h3>Parken</h3>${paras(a.parken)}</div>
-      <div class="rv"><h3>Unterkünfte</h3>${paras(a.unterkuenfte)}</div></div>`));
+      ${has(a.parken) ? `<div class="rv"><h3>Parken</h3>${paras(a.parken)}</div>` : ""}
+      ${has(a.unterkuenfte) ? `<div class="rv"><h3>Unterkünfte</h3>${paras(a.unterkuenfte)}</div>` : ""}</div>`));
 
     // Dresscode
     out.push(sec("dresscode", D.dresscode.label, D.dresscode.titel, has(D.dresscode.text) ? `<div class="lead rv" style="--i:2">${paras(D.dresscode.text)}</div>` : ""));
@@ -998,12 +997,14 @@ const INHALT = {
             <a class="btn" href="tel:${esc(tel)}"><span>Anrufen</span></a>
             ${p.whatsapp ? `<a class="btn" href="https://wa.me/${esc(wa)}" target="_blank" rel="noopener"><span>WhatsApp</span></a>` : ""}
           </div>` : `<p class="note"><mark class="ph">[Telefonnummer]</mark></p>`;
-        return `<div class="rv" style="--i:${i}"><p class="person-name">${inline(p.name)}</p><p class="label person-role">${inline(p.rolle)}</p>${tel ? `<p class="note" style="font-variant-numeric:lining-nums">${esc(p.telefon)}</p>` : ""}${links}</div>`;
+        return `<div class="rv" style="--i:${i}"><p class="person-name">${inline(p.name)}</p>${has(p.rolle) ? `<p class="label person-role">${inline(p.rolle)}</p>` : ""}${tel ? `<p class="note" style="font-variant-numeric:lining-nums">${esc(p.telefon)}</p>` : ""}${links}</div>`;
       }).join("")}</div>`));
 
-    // FAQ
-    out.push(sec("faq", D.faq.label, D.faq.titel, `<div class="faq rv" style="--i:2">${D.faq.fragen.map(f => `
-      <details><summary>${inline(f.frage)}</summary><div class="answer"><div>${paras(f.antwort)}</div></div></details>`).join("")}</div>`));
+    // FAQ (optional)
+    if (D.faq.fragen.length) {
+      out.push(sec("faq", D.faq.label, D.faq.titel, `<div class="faq rv" style="--i:2">${D.faq.fragen.map(f => `
+        <details><summary>${inline(f.frage)}</summary><div class="answer"><div>${paras(f.antwort)}</div></div></details>`).join("")}</div>`));
+    }
 
     // Fotos (optional)
     if (D.fotos.bilder.length) {
