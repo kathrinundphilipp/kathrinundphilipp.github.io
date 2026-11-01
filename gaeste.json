@@ -1,20 +1,436 @@
 [
   {
-    "code": "ida",
-    "umschlag": "Ida",
-    "anrede": "Liebe Ida",
-    "personen": 1
+    "code": "ge",
+    "umschlag": "Gerlind & Elmar",
+    "anrede": "Liebe Gerlind, lieber Elmar",
+    "personen": 2,
+    "form": "ihr"
   },
   {
-    "code": "mueller",
-    "umschlag": "Familie Müller-Lüdenscheidt",
-    "anrede": "Liebe Familie Müller-Lüdenscheidt",
-    "personen": 4
+    "code": "ha",
+    "umschlag": "Anneliese & Heinz",
+    "anrede": "Liebe Anneliese, lieber Heinz",
+    "personen": 2,
+    "form": "ihr"
   },
   {
-    "code": "anna-tom",
-    "umschlag": "Anna & Tom",
-    "anrede": "Liebe Anna und lieber Tom",
-    "personen": 2
+    "code": "mb",
+    "umschlag": "Mira & Bastian",
+    "anrede": "Liebe Mira, lieber Bastian",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "pm",
+    "umschlag": "Pia & Mathis",
+    "anrede": "Liebe Pia, lieber Mathis",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "lk",
+    "umschlag": "Leni",
+    "anrede": "Liebe Leni",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "ak",
+    "umschlag": "Anna",
+    "anrede": "Liebe Anna",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "roj",
+    "umschlag": "Ruth, Oliver & Johann",
+    "anrede": "Liebe Ruth, lieber Oliver, lieber Johann",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "sg",
+    "umschlag": "Sandra & Gernot",
+    "anrede": "Liebe Sandra, lieber Gernot",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "ek",
+    "umschlag": "Ellen",
+    "anrede": "Liebe Ellen",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "pk",
+    "umschlag": "Paula",
+    "anrede": "Liebe Paula",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "mh",
+    "umschlag": "Marlene & Hans",
+    "anrede": "Liebe Marlene, lieber Hans",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "gl",
+    "umschlag": "Guido",
+    "anrede": "Lieber Guido",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "mm",
+    "umschlag": "Marion & Mark",
+    "anrede": "Liebe Marion, lieber Mark",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "th",
+    "umschlag": "Mathilde & Herbert",
+    "anrede": "Liebe Mathilde, lieber Herbert",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "ae",
+    "umschlag": "Adrian & Eva",
+    "anrede": "Lieber Adrian, liebe Eva",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "db",
+    "umschlag": "Debbie & Bernd",
+    "anrede": "Liebe Debbie, lieber Bernd",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "rd",
+    "umschlag": "Dennis & Romina",
+    "anrede": "Liebe Romina, lieber Dennis",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "ss",
+    "umschlag": "Stefan & Silke",
+    "anrede": "Liebe Silke, lieber Stefan",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "c",
+    "umschlag": "Chiara",
+    "anrede": "Liebe Chiara",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "vm",
+    "umschlag": "Michel & Verena",
+    "anrede": "Liebe Verena, lieber Michel",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "al",
+    "umschlag": "Linus & Amelie",
+    "anrede": "Liebe Amelie, lieber Linus",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "j",
+    "umschlag": "Jannis",
+    "anrede": "Lieber Jannis",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "sw",
+    "umschlag": "Sue & Willi",
+    "anrede": "Liebe Sue, lieber Willi",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "ej",
+    "umschlag": "Eva",
+    "anrede": "Liebe Eva",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "mp",
+    "umschlag": "Milena & Paul",
+    "anrede": "Liebe Milena, lieber Paul",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "le",
+    "umschlag": "Lars",
+    "anrede": "Lieber Lars",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "hl",
+    "umschlag": "Hanna & Lennart",
+    "anrede": "Liebe Hanna, lieber Lennart",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "ld",
+    "umschlag": "Lorraine & David",
+    "anrede": "Liebe Lorraine, lieber David",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "i",
+    "umschlag": "Ines",
+    "anrede": "Liebe Ines",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "ml",
+    "umschlag": "Maria & Lutz",
+    "anrede": "Liebe Maria, lieber Lutz",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "r",
+    "umschlag": "Romina",
+    "anrede": "Liebe Romina",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "jj",
+    "umschlag": "Jule & Joshua",
+    "anrede": "Liebe Jule, lieber Joshua",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "jm",
+    "umschlag": "Janine & Michael",
+    "anrede": "Liebe Janine, lieber Michael",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "jh",
+    "umschlag": "Jana",
+    "anrede": "Liebe Jana",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "m",
+    "umschlag": "Melina",
+    "anrede": "Liebe Melina",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "ap",
+    "umschlag": "Alina",
+    "anrede": "Liebe Alina",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "kf",
+    "umschlag": "Florian & Katha",
+    "anrede": "Liebe Katha, lieber Florian",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "sl",
+    "umschlag": "Steven",
+    "anrede": "Lieber Steven",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "ab",
+    "umschlag": "Anna",
+    "anrede": "Liebe Anna",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "lmp",
+    "umschlag": "Laura & Matthias",
+    "anrede": "Liebe Laura, lieber Matthias",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "lm",
+    "umschlag": "Lorena & Markus",
+    "anrede": "Liebe Lorena, lieber Markus",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "it",
+    "umschlag": "Isabelle & Tom",
+    "anrede": "Liebe Isabelle, lieber Tom",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "tl",
+    "umschlag": "Tim & Lili",
+    "anrede": "Liebe Lili, lieber Tim",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "af",
+    "umschlag": "Felix & Alicia",
+    "anrede": "Liebe Alicia, lieber Felix",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "el",
+    "umschlag": "Luca & Ellen",
+    "anrede": "Liebe Ellen, lieber Luca",
+    "personen": 2,
+    "form": "du"
+  },
+  {
+    "code": "pc",
+    "umschlag": "Patrick",
+    "anrede": "Lieber Patrick",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "cg",
+    "umschlag": "Christian",
+    "anrede": "Lieber Christian",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "ls",
+    "umschlag": "Lennart & Sophie",
+    "anrede": "Liebe Sophie, lieber Lennart",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "sr",
+    "umschlag": "Sven",
+    "anrede": "Lieber Sven",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "mz",
+    "umschlag": "Masai",
+    "anrede": "Lieber Masai",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "mw",
+    "umschlag": "Martin",
+    "anrede": "Lieber Martin",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "jn",
+    "umschlag": "Julian",
+    "anrede": "Lieber Julian",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "ac",
+    "umschlag": "Andre & Celine",
+    "anrede": "Liebe Celine, lieber Andre",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "gs",
+    "umschlag": "Gino & Sinja",
+    "anrede": "Liebe Sinja, lieber Gino",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "dh",
+    "umschlag": "Dominik & Hannah",
+    "anrede": "Liebe Hannah, lieber Dominik",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "nm",
+    "umschlag": "Nikolas",
+    "anrede": "Lieber Nikolas",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "tm",
+    "umschlag": "Timo & Mirjam",
+    "anrede": "Liebe Mirjam, lieber Timo",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "ij",
+    "umschlag": "Ilyas & Jana",
+    "anrede": "Liebe Jana, lieber Ilyas",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "ll",
+    "umschlag": "Lea & Lukas",
+    "anrede": "Liebe Lea, lieber Lukas",
+    "personen": 2,
+    "form": "ihr"
+  },
+  {
+    "code": "mo",
+    "umschlag": "Martin",
+    "anrede": "Lieber Martin",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "ah",
+    "umschlag": "Antonia",
+    "anrede": "Liebe Antonia",
+    "personen": 1,
+    "form": "du"
+  },
+  {
+    "code": "jw",
+    "umschlag": "Jan",
+    "anrede": "Lieber Jan",
+    "personen": 1,
+    "form": "du"
   }
 ]

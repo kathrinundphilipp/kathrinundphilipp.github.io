@@ -318,7 +318,7 @@ p { margin: 0 0 1em; hyphens: auto; text-wrap: pretty; }
 .greet-name { font: 400 clamp(38px, 11vw, 56px)/1.15 var(--script); color: var(--ink); margin: .2em 0 .7em; text-wrap: balance; hyphens: manual; }
 .greet-name { font-size: clamp(38px, 11cqi, 56px); }
 .signature { margin-top: 2.4em; }
-.greet-name .comma { margin-left: -.32em; }
+.comma { margin-left: -.58em; }
 
 /* Countdown */
 .count { display: flex; justify-content: center; margin: 2.2em 0 .6em; }
@@ -729,6 +729,8 @@ const INHALT = {
   const inline = s => esc(form(s)).replace(/\[([^\]]+)\]/g, '<mark class="ph">[$1]</mark>').replace(/\n/g, "<br>");
   const paras = s => String(s).trim() ? String(s).trim().split(/\n\s*\n/).map(p => `<p>${inline(p)}</p>`).join("") : "";
   const has = s => s && String(s).trim().length > 0;
+  // Eyesome setzt viel Raum vor das Komma – in Script-Texten etwas heranrücken
+  const scriptCommas = html => html.replace(/,/g, '<span class="comma">,</span>');
 
   /* ---------- Umschlag: Geometrie (Bild wie object-fit: cover) ---------- */
   const stage = $("#stage"), plate = $("#plate"), video = $("#video"), ink = $("#ink"), inkName = $("#inkName");
@@ -889,7 +891,7 @@ const INHALT = {
     plural = gast ? (gast.form ? gast.form === "ihr" : (gast.personen || 1) > 1) : true;
     if (gast && has(gast.umschlag)) {
       // nach Bindestrichen nicht umbrechen: „Familie / Müller-Lüdenscheidt“
-      inkName.textContent = gast.umschlag.replace(/-/g, "-\u2060");
+      inkName.innerHTML = scriptCommas(esc(gast.umschlag.replace(/-/g, "-\u2060")));
       stage.setAttribute("aria-label", `Öffne mich – Umschlag für ${gast.umschlag}`);
       fitName();
       requestAnimationFrame(() => requestAnimationFrame(() => inkName.classList.add("on")));
@@ -932,7 +934,7 @@ const INHALT = {
     // Begrüßung
     const anrede = gast && has(gast.anrede) ? gast.anrede : D.begruessung.anredeOhneCode;
     out.push(`<section class="sec" id="willkommen" aria-label="Begrüßung"><div class="wrap">
-      <p class="greet-name rv">${inline(anrede)}<span class="comma">,</span></p>
+      <p class="greet-name rv">${scriptCommas(inline(anrede) + ",")}</p>
       <div class="lead rv" style="--i:1">${paras(D.begruessung.text)}</div>
       <p class="label signature rv" style="--i:2">${inline(D.begruessung.unterschrift)}</p>
     </div></section>`);
