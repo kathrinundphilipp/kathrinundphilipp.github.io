@@ -45,6 +45,7 @@ Ein Eintrag in `gaeste.json`:
 - `anrede`: wird genau so übernommen, z. B. „Liebe Anna und lieber Tom“.
 - `personen`: Höchstzahl im Formular.
 - Optional `"form": "du"` oder `"form": "ihr"`, wenn die automatische Wahl (1 Person = du) nicht passt.
+- Optional `"kinder": true`: Dann erscheint in der Begrüßung zusätzlich der Absatz zum Thema Kinder (Text in `INHALT.begruessung.kinder`).
 - Zwischen Einträgen steht ein Komma, nach dem letzten keins.
 
 Danach die Linkliste neu erzeugen. Sie wird **außerhalb** des Repos gespeichert und daher nicht veröffentlicht:

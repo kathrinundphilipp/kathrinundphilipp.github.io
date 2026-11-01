@@ -594,7 +594,9 @@ const INHALT = {
 
   begruessung: {
     anredeOhneCode: "Liebe Gäste",
-    text: "[Euer Einladungstext – z. B. ein paar persönliche Sätze, warum wir uns freuen, diesen Tag mit {dir|euch} zu feiern.]",
+    text: "nach 10 gemeinsamen Jahren, vielen Abenteuern und noch mehr schönen Erinnerungen wollen wir uns das Ja-Wort geben.\n\nAm 25. September 2027 möchten wir diesen besonderen Tag mit {dir|euch} feiern und auf die Liebe anstoßen.",
+    // Erscheint nur bei Gästen mit "kinder": true in gaeste.json
+    kinder: "Wir lieben {deine|eure} Kinder, aber an diesem Tag möchten wir {dich|euch} ganz für uns haben. {Such dir|Sucht euch} also einen guten Babysitter, {zieh|zieht} die Tanzschuhe an und {feier|feiert} mit uns bis spät in die Nacht!",
     unterschrift: "Kathrin & Philipp"
   },
 
@@ -615,10 +617,10 @@ const INHALT = {
     label: "Ablauf",
     titel: "Der Tag mit {dir|euch}",
     punkte: [
-      { zeit: "[Uhrzeit]", titel: "[Programmpunkt]", text: "" },
-      { zeit: "[Uhrzeit]", titel: "[Programmpunkt]", text: "" },
-      { zeit: "[Uhrzeit]", titel: "[Programmpunkt]", text: "" },
-      { zeit: "[Uhrzeit]", titel: "[Programmpunkt]", text: "" }
+      { zeit: "15:00", titel: "Ankunft der Gäste", text: "{Komm|Kommt} an, {mach es dir|macht es euch} gemütlich und {stimm dich|stimmt euch} mit uns auf den Tag ein." },
+      { zeit: "15:30", titel: "Trauung", text: "Der große Moment: Wir geben uns das Ja-Wort." },
+      { zeit: "18:30", titel: "Abendessen", text: "Wir lassen es uns gemeinsam schmecken und stoßen auf die Liebe an." },
+      { zeit: "20:30", titel: "Party", text: "Tanzschuhe an – wir feiern bis spät in die Nacht." }
     ]
   },
 
@@ -636,7 +638,8 @@ const INHALT = {
   anreise: {
     label: "Anreise",
     titel: "Anfahrt, Parken & Unterkünfte",
-    anfahrt: "[Infos zur Anfahrt]",
+    anfahrt: "Den Weg zur Stadbroekermolen {findest du|findet ihr} hier:",
+    anfahrtLink: "https://maps.app.goo.gl/ZCoAT41YKfuuz5Gu6",
     parken: "[Infos zum Parken]",
     unterkuenfte: "[Hotels und Unterkünfte in der Nähe]"
   },
@@ -650,7 +653,7 @@ const INHALT = {
   rsvp: {
     label: "Zu- oder Absage",
     titel: "{Gibst du|Gebt ihr} uns Bescheid?",
-    frist: "[Datum]",
+    frist: "1. Mai 2027",
     fristText: "Wir bitten um {deine|eure} Antwort bis zum ",
     maxPersonenOhneCode: 4,
     zusage: "{Ich komme|Wir kommen} gern",
@@ -674,7 +677,7 @@ const INHALT = {
   geschenke: {
     label: "Geschenke",
     titel: "Geschenke",
-    text: "[Text zu Geschenken]"
+    text: "Das schönste Geschenk ist, dass {du|ihr} mit uns {feierst|feiert}. Wer uns darüber hinaus eine Freude machen möchte, kann etwas zu unserer Hochzeitsreise beisteuern, damit wir unvergessliche Erinnerungen sammeln können."
   },
 
   ansprechpartner: {
@@ -727,7 +730,9 @@ const INHALT = {
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const form = s => String(s).replace(/\{([^|{}]*)\|([^|{}]*)\}/g, (_, a, b) => plural ? b : a);
   const inline = s => esc(form(s)).replace(/\[([^\]]+)\]/g, '<mark class="ph">[$1]</mark>').replace(/\n/g, "<br>");
-  const paras = s => String(s).trim() ? String(s).trim().split(/\n\s*\n/).map(p => `<p>${inline(p)}</p>`).join("") : "";
+  // Kein einzelnes Wort allein in der letzten Zeile; „Ja-Wort“ nie am Bindestrich trennen
+  const tidy = p => p.replace(/Ja-Wort/g, "Ja-⁠Wort").replace(/ (\S+)$/, " $1");
+  const paras = s => String(s).trim() ? String(s).trim().split(/\n\s*\n/).map(p => `<p>${inline(tidy(p))}</p>`).join("") : "";
   const has = s => s && String(s).trim().length > 0;
   // Eyesome setzt viel Raum vor das Komma – in Script-Texten etwas heranrücken
   const scriptCommas = html => html.replace(/,/g, '<span class="comma">,</span>');
@@ -935,7 +940,7 @@ const INHALT = {
     const anrede = gast && has(gast.anrede) ? gast.anrede : D.begruessung.anredeOhneCode;
     out.push(`<section class="sec" id="willkommen" aria-label="Begrüßung"><div class="wrap">
       <p class="greet-name rv">${scriptCommas(inline(anrede) + ",")}</p>
-      <div class="lead rv" style="--i:1">${paras(D.begruessung.text)}</div>
+      <div class="lead rv" style="--i:1">${paras(D.begruessung.text)}${gast && gast.kinder ? paras(D.begruessung.kinder) : ""}</div>
       <p class="label signature rv" style="--i:2">${inline(D.begruessung.unterschrift)}</p>
     </div></section>`);
 
@@ -953,7 +958,7 @@ const INHALT = {
     // Ablauf
     out.push(sec("ablauf", D.ablauf.label, D.ablauf.titel, `
       <ol class="timeline">${D.ablauf.punkte.map((p, i) => `
-        <li class="rv" style="--i:${i % 3}"><span class="t-time">${inline(p.zeit)}</span><span class="t-title">${inline(p.titel)}</span>${has(p.text) ? `<span class="t-text">${inline(p.text)}</span>` : ""}</li>`).join("")}
+        <li class="rv" style="--i:${i % 3}"><span class="t-time">${inline(p.zeit)}</span><span class="t-title">${inline(p.titel)}</span>${has(p.text) ? `<span class="t-text">${inline(tidy(p.text))}</span>` : ""}</li>`).join("")}
       </ol>`));
 
     // Ort
@@ -966,7 +971,7 @@ const INHALT = {
     // Anreise
     const a = D.anreise;
     out.push(sec("anreise", a.label, a.titel, `<div class="blocks">
-      <div class="rv"><h3>Anfahrt</h3>${paras(a.anfahrt)}</div>
+      <div class="rv"><h3>Anfahrt</h3>${paras(a.anfahrt)}${has(a.anfahrtLink) ? `<a class="btn" href="${esc(a.anfahrtLink)}" target="_blank" rel="noopener"><span>In Google Maps öffnen</span></a>` : ""}</div>
       <div class="rv"><h3>Parken</h3>${paras(a.parken)}</div>
       <div class="rv"><h3>Unterkünfte</h3>${paras(a.unterkuenfte)}</div></div>`));
 
