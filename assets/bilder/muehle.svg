@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<defs>
+<filter id="w" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".025" numOctaves="2" seed="13"/><feDisplacementMap in="SourceGraphic" scale="1.7"/></filter>
+<filter id="a" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="20"/><feDisplacementMap in="SourceGraphic" scale="11"/><feGaussianBlur stdDeviation=".7"/></filter>
+</defs>
+<g filter="url(#a)"><path d="M22 64L56 38L88 64L88 96L22 96Z" fill="#e2bca5" opacity=".35"/><circle cx="90" cy="80" r="20" fill="#c4a96c" opacity=".35"/><ellipse cx="60" cy="102" rx="46" ry="7" fill="#8fa892" opacity=".45"/></g>
+<g filter="url(#w)" fill="none" stroke="#465c47" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 96L24 64L56 40L86 64L86 96"/><path d="M18 66L56 37L92 66" stroke-width="1.2"/>
+   <path d="M44 96L44 80C44 74 52 74 52 80L52 96" stroke-width="1.1"/>
+   <path d="M30 70L38 70L38 78L30 78Z M34 70L34 78M30 74L38 74" stroke-width=".9"/>
+   <path d="M60 70L68 70L68 78L60 78Z M64 70L64 78M60 74L68 74" stroke-width=".9"/>
+   <path d="M50 52L60 52L60 60L50 60Z" stroke-width=".9"/>
+   <path d="M70 46L70 36L76 36L76 51" stroke-width="1"/>
+   <g transform="translate(90 80)"><circle r="17"/><circle r="4" stroke-width=".9"/><path d="M0 -17L0 17" transform="rotate(0)" stroke-width=".8"/><path d="M0 -17L0 17" transform="rotate(45)" stroke-width=".8"/><path d="M0 -17L0 17" transform="rotate(90)" stroke-width=".8"/><path d="M0 -17L0 17" transform="rotate(135)" stroke-width=".8"/><path d="M0 -17L0 -22" transform="rotate(0)" stroke-width="1"/><path d="M0 -17L0 -22" transform="rotate(30)" stroke-width="1"/><path d="M0 -17L0 -22" transform="rotate(60)" stroke-width="1"/><path d="M0 -17L0 -22" transform="rotate(90)" stroke-width="1"/><path d="M0 -17L0 -22" transform="rotate(120)" stroke-width="1"/><path d="M0 -17L0 -22" transform="rotate(150)" stroke-width="1"/><path d="M0 -17L0 -22" transform="rotate(180)" stroke-width="1"/><path d="M0 -17L0 -22" transform="rotate(210)" stroke-width="1"/><path d="M0 -17L0 -22" transform="rotate(240)" stroke-width="1"/><path d="M0 -17L0 -22" transform="rotate(270)" stroke-width="1"/><path d="M0 -17L0 -22" transform="rotate(300)" stroke-width="1"/><path d="M0 -17L0 -22" transform="rotate(330)" stroke-width="1"/></g>
+   <path d="M10 100C18 97 24 103 32 100S46 97 54 100S68 103 76 100S92 97 110 100" stroke-width="1"/>
+   <path d="M20 106C28 103 34 109 42 106S58 103 66 106S82 109 98 106" stroke-width=".8"/></g>
+</svg>

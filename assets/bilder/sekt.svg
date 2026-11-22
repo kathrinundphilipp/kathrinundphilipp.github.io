@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<defs>
+<filter id="w" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".025" numOctaves="2" seed="5"/><feDisplacementMap in="SourceGraphic" scale="1.7"/></filter>
+<filter id="a" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="12"/><feDisplacementMap in="SourceGraphic" scale="11"/><feGaussianBlur stdDeviation=".7"/></filter>
+</defs>
+<g filter="url(#a)"><g transform="translate(35 104) rotate(12.5)"><path d="M-8.4 -64C-3 -62 3 -66 8.6 -64C8 -50 6 -42 0 -36C-6 -42 -8 -50 -8.4 -64Z" fill="#c4a96c" opacity=".55"/></g><g transform="translate(85 104) rotate(-12.5)"><path d="M-8.4 -64C-3 -62 3 -66 8.6 -64C8 -50 6 -42 0 -36C-6 -42 -8 -50 -8.4 -64Z" fill="#c4a96c" opacity=".55"/></g><ellipse cx="60" cy="26" rx="16" ry="11" fill="#c4a96c" opacity=".25"/></g>
+<g filter="url(#w)" fill="none" stroke="#465c47" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(35 104) rotate(12.5)">
+   <path d="M-9 -80C-10 -58 -7 -42 -1.2 -35M9 -80C10 -58 7 -42 1.2 -35"/>
+   <ellipse cx="0" cy="-80" rx="9" ry="2.2" stroke-width="1"/>
+   <path d="M-8.4 -64C-3 -62 3 -66 8.6 -64" stroke-width=".8"/>
+   <path d="M-1.2 -35L-1 -5M1.2 -35L1 -5"/>
+   <ellipse cx="0" cy="-3" rx="11" ry="2.8"/>
+   <circle cx="-2" cy="-52" r=".9" stroke-width=".7"/><circle cx="2.5" cy="-46" r=".7" stroke-width=".6"/><circle cx="-1" cy="-58" r=".6" stroke-width=".6"/>
+ </g><g transform="translate(85 104) rotate(-12.5)">
+   <path d="M-9 -80C-10 -58 -7 -42 -1.2 -35M9 -80C10 -58 7 -42 1.2 -35"/>
+   <ellipse cx="0" cy="-80" rx="9" ry="2.2" stroke-width="1"/>
+   <path d="M-8.4 -64C-3 -62 3 -66 8.6 -64" stroke-width=".8"/>
+   <path d="M-1.2 -35L-1 -5M1.2 -35L1 -5"/>
+   <ellipse cx="0" cy="-3" rx="11" ry="2.8"/>
+   <circle cx="-2" cy="-52" r=".9" stroke-width=".7"/><circle cx="2.5" cy="-46" r=".7" stroke-width=".6"/><circle cx="-1" cy="-58" r=".6" stroke-width=".6"/>
+ </g>
+   <path d="M60 15L60 7M51 18L46 12M69 18L74 12" stroke-width="1"/><path d="M84 27L84 33M81 30L87 30" stroke-width="1.1"/><path d="M82.5 28.5L85.5 31.5M82.5 31.5L85.5 28.5" stroke-width=".7"/><path d="M36 29.5L36 34.5M33.5 32L38.5 32" stroke-width="1.1"/><path d="M34.75 30.75L37.25 33.25M34.75 33.25L37.25 30.75" stroke-width=".7"/></g>
+</svg>

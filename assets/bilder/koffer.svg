@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+<defs>
+<filter id="w" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".025" numOctaves="2" seed="19"/><feDisplacementMap in="SourceGraphic" scale="1.7"/></filter>
+<filter id="a" x="-20%" y="-20%" width="140%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".05" numOctaves="3" seed="26"/><feDisplacementMap in="SourceGraphic" scale="11"/><feGaussianBlur stdDeviation=".7"/></filter>
+</defs>
+<g filter="url(#a)"><path d="M22 46L98 46L98 98L22 98Z" fill="#c4a96c" opacity=".38"/><circle cx="84" cy="62" r="7" fill="#e2bca5" opacity=".6"/><path d="M30 56L50 56L50 68L30 68Z" fill="#8fa892" opacity=".5"/></g>
+<g filter="url(#w)" fill="none" stroke="#465c47" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M26 46L94 46C97 46 98 47 98 50L98 94C98 97 97 98 94 98L26 98C23 98 22 97 22 94L22 50C22 47 23 46 26 46Z"/>
+   <path d="M48 46L48 36C48 33 50 32 52 32L68 32C70 32 72 33 72 36L72 46" stroke-width="1.3"/>
+   <path d="M40 46L40 98M80 46L80 98" stroke-width=".9"/><path d="M22 72L98 72" stroke-width=".7"/>
+   <path d="M30 56L50 56L50 68L30 68Z" stroke-width=".8"/><circle cx="84" cy="62" r="6.5" stroke-width=".8"/>
+   <path d="M28 98L28 103M92 98L92 103" stroke-width="1.6"/>
+   <path d="M98 58C104 58 106 64 104 70L100 80" stroke-width=".8"/><path d="M98 78L104 76L106 84L100 86Z" stroke-width=".8"/>
+   <path d="M14 26C24 22 34 30 44 24" stroke-width=".7" stroke-dasharray="2 3"/><path d="M44 24L52 20L49 25L53 29Z" stroke-width=".9"/></g>
+</svg>
