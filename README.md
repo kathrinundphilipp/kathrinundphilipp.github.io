@@ -25,7 +25,7 @@ In `index.html` nach `const INHALT = {` suchen. Nur die Texte in Anführungszeic
 - Trauzeugen: `telefon` im internationalen Format, z. B. `"+49 170 1234567"`. Dann erscheinen „Anrufen“ und (mit `whatsapp: true`) „WhatsApp“.
 - **Fotos:** Bilder nach `assets/fotos/` legen (am besten WebP, ca. 1600 px breit, dazu eine 800-px-Version) und in `fotos.bilder` eintragen. Bei leerer Liste wird die Sektion ausgeblendet.
 - **Musik:** MP3 nach `assets/musik.mp3` legen und `musik: "assets/musik.mp3"` setzen. Dann erscheint oben rechts der Ton-Schalter (standardmäßig aus).
-- **Kalender:** Ändert sich die Uhrzeit, bitte auch `assets/hochzeit.ics` anpassen (aktuell ganztägiger Termin am 25.09.2027).
+- **Kalender:** Termin 25.09.2027, 15:00–24:00 Uhr. Ändert sich die Uhrzeit, `assets/hochzeit.ics` (Zeiten in UTC, also 2 Stunden früher) und `datum.kalender.googleDatum` anpassen.
 
 ## Gäste hinzufügen
 

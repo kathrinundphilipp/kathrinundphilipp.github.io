@@ -5,12 +5,15 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:hochzeit-kathrin-philipp-20270925@kathrinundphilipp.github.io
-DTSTAMP:20261028T120000Z
-DTSTART;VALUE=DATE:20270925
-DTEND;VALUE=DATE:20270926
+DTSTAMP:20261122T120000Z
+SEQUENCE:1
+DTSTART:20270925T130000Z
+DTEND:20270925T220000Z
 SUMMARY:Hochzeit Kathrin & Philipp
-LOCATION:Stadbroekermolen\, Jacqueline Roufsweg 1\, 6136 VG Sittard\, Niederlande
-DESCRIPTION:Alle Infos: https://kathrinundphilipp.github.io/
+LOCATION:Stadbroekermolen\, Jacqueline Roufsweg 1\, 6136 VG Sittard\, Niede
+ rlande
+DESCRIPTION:15:00 Ankunft der Gäste\n15:30 Trauung\n18:30 Abendessen\n20:3
+ 0 Party\n\nAlle Infos: https://kathrinundphilipp.github.io/
 URL:https://kathrinundphilipp.github.io/
 TRANSP:OPAQUE
 END:VEVENT
